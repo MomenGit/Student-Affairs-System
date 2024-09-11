@@ -1,0 +1,12 @@
+﻿services:
+  studentaffairssystem.adminwebapp:
+    image: studentaffairssystem.adminwebapp
+    build:
+      context: .
+      dockerfile: StudentAffairsSystem.AdminWebApp/Dockerfile
+
+  studentaffairssystem.webapi:
+    image: studentaffairssystem.webapi
+    build:
+      context: .
+      dockerfile: StudentAffairsSystem.WebApi/Dockerfile
