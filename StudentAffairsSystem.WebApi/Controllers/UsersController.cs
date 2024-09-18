@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentAffairsSystem.CommonModels.Entities;
@@ -5,8 +6,9 @@ using StudentAffairsSystem.WebApi.Repositories;
 
 namespace StudentAffairsSystem.WebApi.Controllers;
 
-[Route("[controller]")]
 [ApiController]
+[Route("api/v{version:apiVersion}/[controller]")]
+[ApiVersion("1.0")]
 public class UsersController : ControllerBase
 {
     private readonly IUnitOfWork _unitOfWork;
