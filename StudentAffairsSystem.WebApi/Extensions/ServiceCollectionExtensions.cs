@@ -1,4 +1,3 @@
-using StudentAffairsSystem.CommonModels.Entities;
 using StudentAffairsSystem.WebApi.Repositories;
 
 namespace StudentAffairsSystem.WebApi.Extensions;
@@ -9,6 +8,16 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IStudentRepository, StudentRepository>();
+        services.AddScoped<IProfessorRepository, ProfessorRepository>();
+        services.AddScoped<IAdminRepository, AdminRepository>();
+        services.AddScoped<IFacultyRepository, FacultyRepository>();
+        services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+        services.AddScoped<IStudyProgramRepository, StudyProgramRepository>();
+        services.AddScoped<ICourseRepository, CourseRepository>();
+        services.AddScoped<ICourseEnrollmentRepository, CourseEnrollmentRepository>();
+        services.AddScoped<ISemesterRepository, SemesterRepository>();
+        services.AddScoped<ISemesterCourseRepository, SemesterCourseRepository>();
         return services;
     }
 
