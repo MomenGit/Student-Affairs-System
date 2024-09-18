@@ -6,30 +6,18 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly StudentAffairsDbContext _context;
 
-    public IUserRepository Users { get; private set; }
-    public IStudentRepository Students { get; private set; }
-    public IProfessorRepository Professors { get; private set; }
-    public IAdminRepository Admins { get; private set; }
-    public IFacultyRepository Faculities { get; private set; }
-    public IDepartmentRepository Departments { get; private set; }
-    public IStudyProgramRepository StudyPrograms { get; private set; }
-    public ICourseRepository Courses { get; private set; }
-    public ICourseEnrollmentRepository CourseEnrollments { get; private set; }
-    public ISemesterRepository Semesters { get; private set; }
-    public ISemesterCourseRepository SemesterCourses { get; private set; }
-    
 
     public UnitOfWork(
-        StudentAffairsDbContext context, 
-        IUserRepository users, 
-        IStudentRepository students, 
-        IProfessorRepository professors, 
-        IAdminRepository admins, 
-        IFacultyRepository faculties, 
-        IDepartmentRepository departments, 
-        IStudyProgramRepository studyPrograms, ICourseRepository courses, 
-        ICourseEnrollmentRepository courseEnrollments, 
-        ISemesterRepository semesters, 
+        StudentAffairsDbContext context,
+        IUserRepository users,
+        IStudentRepository students,
+        IProfessorRepository professors,
+        IAdminRepository admins,
+        IFacultyRepository faculties,
+        IDepartmentRepository departments,
+        IStudyProgramRepository studyPrograms, ICourseRepository courses,
+        ICourseEnrollmentRepository courseEnrollments,
+        ISemesterRepository semesters,
         ISemesterCourseRepository semesterCourses)
     {
         _context = context;
@@ -45,6 +33,19 @@ public class UnitOfWork : IUnitOfWork
         Semesters = semesters;
         SemesterCourses = semesterCourses;
     }
+
+    public IStudentRepository Students { get; }
+    public IProfessorRepository Professors { get; }
+    public IAdminRepository Admins { get; }
+    public IFacultyRepository Faculities { get; }
+    public IDepartmentRepository Departments { get; }
+    public IStudyProgramRepository StudyPrograms { get; }
+    public ICourseRepository Courses { get; }
+    public ICourseEnrollmentRepository CourseEnrollments { get; }
+    public ISemesterRepository Semesters { get; }
+    public ISemesterCourseRepository SemesterCourses { get; }
+
+    public IUserRepository Users { get; set; }
 
     public async Task<int> CompleteAsync()
     {
