@@ -10,4 +10,6 @@ public class Department : BaseEntity
     [ForeignKey("Faculty")] public Guid FacultyId { get; set; }
 
     [InverseProperty("Departments")] public Faculty? Faculty { get; set; }
+    
+    [InverseProperty("Department")] public ICollection<StudyProgram>? StudyPrograms { get; set; }
 }

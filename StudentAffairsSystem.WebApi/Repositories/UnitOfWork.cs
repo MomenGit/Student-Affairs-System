@@ -6,13 +6,13 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly StudentAffairsDbContext _context;
 
+    public IUserRepository Users { get; private set; }
+
     public UnitOfWork(StudentAffairsDbContext context, IUserRepository users)
     {
         _context = context;
         Users = users;
     }
-
-    public IUserRepository Users { get; }
 
     public async Task<int> CompleteAsync()
     {

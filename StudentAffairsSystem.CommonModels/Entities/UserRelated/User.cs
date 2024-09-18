@@ -17,7 +17,7 @@ public class User : BaseEntity
 
     [Required] [MaxLength(50)] public string? Password { get; set; }
 
-    [Required] public DateTime DateOfBirth { get; set; }
+    [Required] public DateTime BirthDate { get; set; }
 
     [Required] public string? Address { get; set; }
 

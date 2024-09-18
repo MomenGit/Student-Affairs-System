@@ -1,13 +1,13 @@
 using Asp.Versioning;
+using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 using StudentAffairsSystem.WebApi.Data;
 using StudentAffairsSystem.WebApi.Extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+Env.Load();
 // Add services to the container.
-builder.Services.AddRepositories();
-builder.Services.AddUnitOfWork();
 
 // Add API versioning
 builder.Services.AddApiVersioning(options =>
@@ -32,6 +32,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContextPool<StudentAffairsDbContext>(options =>
     options.UseNpgsql(
         Environment.GetEnvironmentVariable("DB_CONNECTION_STRING")));
+
+// Register repositories and UnitOfWork.
+builder.Services.AddRepositories();
+builder.Services.AddUnitOfWork();
 
 WebApplication app = builder.Build();
 

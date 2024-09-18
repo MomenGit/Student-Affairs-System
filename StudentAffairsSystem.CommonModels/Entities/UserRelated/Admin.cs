@@ -11,5 +11,5 @@ public class Admin : BaseEntity
 
 public enum AdminPrivileges
 {
-    Super = 1
+    Super
 }
