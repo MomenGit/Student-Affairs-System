@@ -4,16 +4,16 @@ namespace StudentAffairsSystem.CommonModels.Entities;
 
 public class User : BaseEntity
 {
-    [Required] [MaxLength(50)] public string? FirstName { get; init; }
+    [Required] [MaxLength(50)] public string? FirstName { get; set; }
 
-    [Required] [MaxLength(50)] public string? LastName { get; init; }
+    [Required] [MaxLength(50)] public string? LastName { get; set; }
 
     [Required]
     [EmailAddress]
     [MaxLength(50)]
-    public string? Email { init; get; }
+    public string? Email { get; set; }
 
-    [Required] [Phone] [MaxLength(50)] public string? PhoneNumber { get; init; }
+    [Required] [Phone] [MaxLength(50)] public string? PhoneNumber { get; set; }
 
     [Required] [MaxLength(50)] public string? Password { get; set; }
 
