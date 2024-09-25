@@ -1,6 +1,8 @@
-using StudentAffairsSystem.WebApi.Data;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using StudentAffairsSystem.Infrastructure.Data;
 
-namespace StudentAffairsSystem.WebApi.Extensions;
+namespace StudentAffairsSystem.Infrastructure.Extensions;
 
 public static class DataExtensions
 {

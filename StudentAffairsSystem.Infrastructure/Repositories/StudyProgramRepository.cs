@@ -1,11 +1,8 @@
-using StudentAffairsSystem.Domain.University.Entities;
-using StudentAffairsSystem.WebApi.Data;
+using StudentAffairsSystem.Domain.AcademicStructure.Entities;
+using StudentAffairsSystem.Domain.AcademicStructure.Repositories;
+using StudentAffairsSystem.Infrastructure.Data;
 
-namespace StudentAffairsSystem.WebApi.Repositories;
-
-public interface IStudyProgramRepository : IRepository<StudyProgram>
-{
-}
+namespace StudentAffairsSystem.Infrastructure.Repositories;
 
 public class StudyProgramRepository : Repository<StudyProgram>, IStudyProgramRepository
 {

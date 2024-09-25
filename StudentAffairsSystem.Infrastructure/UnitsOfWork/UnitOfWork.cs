@@ -1,11 +1,14 @@
-using StudentAffairsSystem.WebApi.Data;
+using StudentAffairsSystem.Domain.AcademicStructure.Repositories;
+using StudentAffairsSystem.Domain.Courses.Repositories;
+using StudentAffairsSystem.Domain.Users.Repositories;
+using StudentAffairsSystem.Infrastructure.Data;
+using StudentAffairsSystem.Shared.Repositories;
 
-namespace StudentAffairsSystem.WebApi.Repositories;
+namespace StudentAffairsSystem.Infrastructure.UnitsOfWork;
 
 public class UnitOfWork : IUnitOfWork
 {
     private readonly StudentAffairsDbContext _context;
-
 
     public UnitOfWork(
         StudentAffairsDbContext context,
@@ -25,7 +28,7 @@ public class UnitOfWork : IUnitOfWork
         Students = students;
         Professors = professors;
         Admins = admins;
-        Faculities = faculties;
+        Faculties = faculties;
         Departments = departments;
         StudyPrograms = studyPrograms;
         Courses = courses;
@@ -34,17 +37,16 @@ public class UnitOfWork : IUnitOfWork
         SemesterCourses = semesterCourses;
     }
 
-    public IStudentRepository Students { get; }
-    public IProfessorRepository Professors { get; }
-    public IAdminRepository Admins { get; }
-    public IFacultyRepository Faculities { get; }
-    public IDepartmentRepository Departments { get; }
-    public IStudyProgramRepository StudyPrograms { get; }
-    public ICourseRepository Courses { get; }
-    public ICourseEnrollmentRepository CourseEnrollments { get; }
-    public ISemesterRepository Semesters { get; }
-    public ISemesterCourseRepository SemesterCourses { get; }
-
+    public IStudentRepository Students { get; set; }
+    public IProfessorRepository Professors { get; set; }
+    public IAdminRepository Admins { get; set; }
+    public IFacultyRepository Faculties { get; set; }
+    public IDepartmentRepository Departments { get; set; }
+    public IStudyProgramRepository StudyPrograms { get; set; }
+    public ICourseRepository Courses { get; set; }
+    public ICourseEnrollmentRepository CourseEnrollments { get; set; }
+    public ISemesterRepository Semesters { get; set; }
+    public ISemesterCourseRepository SemesterCourses { get; set; }
     public IUserRepository Users { get; set; }
 
     public async Task<int> CompleteAsync()

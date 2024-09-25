@@ -1,11 +1,8 @@
-using StudentAffairsSystem.CommonModels.Entities;
-using StudentAffairsSystem.WebApi.Data;
+using StudentAffairsSystem.Domain.Users.Entities;
+using StudentAffairsSystem.Domain.Users.Repositories;
+using StudentAffairsSystem.Infrastructure.Data;
 
-namespace StudentAffairsSystem.WebApi.Repositories;
-
-public interface IProfessorRepository : IRepository<Professor>
-{
-}
+namespace StudentAffairsSystem.Infrastructure.Repositories;
 
 public class ProfessorRepository : Repository<Professor>, IProfessorRepository
 {

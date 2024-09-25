@@ -1,4 +1,4 @@
-namespace StudentAffairsSystem.WebApi.Data;
+namespace StudentAffairsSystem.Infrastructure.Data;
 
 public static class DbInitializer
 {

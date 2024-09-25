@@ -1,11 +1,8 @@
 using StudentAffairsSystem.Domain.Courses.Entities;
-using StudentAffairsSystem.WebApi.Data;
+using StudentAffairsSystem.Domain.Courses.Repositories;
+using StudentAffairsSystem.Infrastructure.Data;
 
-namespace StudentAffairsSystem.WebApi.Repositories;
-
-public interface ICourseRepository : IRepository<Course>
-{
-}
+namespace StudentAffairsSystem.Infrastructure.Repositories;
 
 public class CourseRepository : Repository<Course>, ICourseRepository
 {

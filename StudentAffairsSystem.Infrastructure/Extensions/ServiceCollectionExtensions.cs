@@ -1,6 +1,15 @@
-using StudentAffairsSystem.WebApi.Repositories;
+using DotNetEnv;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using StudentAffairsSystem.Domain.AcademicStructure.Repositories;
+using StudentAffairsSystem.Domain.Courses.Repositories;
+using StudentAffairsSystem.Domain.Users.Repositories;
+using StudentAffairsSystem.Infrastructure.Data;
+using StudentAffairsSystem.Infrastructure.Repositories;
+using StudentAffairsSystem.Infrastructure.UnitsOfWork;
+using StudentAffairsSystem.Shared.Repositories;
 
-namespace StudentAffairsSystem.WebApi.Extensions;
+namespace StudentAffairsSystem.Infrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
 {
@@ -24,6 +33,18 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddUnitOfWork(this IServiceCollection services)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        return services;
+    }
+
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    {
+        Env.Load();
+        services.AddDbContextPool<StudentAffairsDbContext>(options =>
+            options.UseNpgsql(
+                Environment.GetEnvironmentVariable("DB_CONNECTION_STRING")));
+        // Register repositories and UnitOfWork.
+        services.AddRepositories();
+        services.AddUnitOfWork();
         return services;
     }
 }

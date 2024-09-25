@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using StudentAffairsSystem.Shared.Repositories;
 
-namespace StudentAffairsSystem.WebApi.Repositories;
+namespace StudentAffairsSystem.Infrastructure.Repositories;
 
 public class Repository<T> : IRepository<T> where T : class
 {

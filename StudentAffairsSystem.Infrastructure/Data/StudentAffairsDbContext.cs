@@ -1,7 +1,10 @@
+using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
-using StudentAffairsSystem.CommonModels.Entities;
+using StudentAffairsSystem.Domain.AcademicStructure.Entities;
+using StudentAffairsSystem.Domain.Courses.Entities;
+using StudentAffairsSystem.Domain.Users.Entities;
 
-namespace StudentAffairsSystem.WebApi.Data;
+namespace StudentAffairsSystem.Infrastructure.Data;
 
 public class StudentAffairsDbContext : DbContext
 {
@@ -9,26 +12,28 @@ public class StudentAffairsDbContext : DbContext
     {
     }
 
-    // User Related
+    // Users Domain
     public DbSet<User> Users { get; set; }
     public DbSet<Student> Students { get; set; }
     public DbSet<Professor> Professors { get; set; }
     public DbSet<Admin> Admins { get; set; }
-    
-    // Organizational
-    public DbSet<Course> Courses { get; set; }
+
+    // Academic Structure Domain
     public DbSet<Faculty> Faculties { get; set; }
     public DbSet<Department> Departments { set; get; }
     public DbSet<StudyProgram> StudyPrograms { get; set; }
     public DbSet<Semester> Semesters { get; set; }
 
-    // Course Realted
+    // Courses Domain
+    public DbSet<Course> Courses { get; set; }
     public DbSet<SemesterCourse> SemesterCourses { get; set; }
     public DbSet<CourseEnrollment> CourseEnrollments { get; set; }
+    public DbSet<StudyProgramCourse> StudyProgramCourses { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        Env.Load();
         string? connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
         if (!optionsBuilder.IsConfigured)
             optionsBuilder.UseNpgsql(connectionString);
@@ -36,27 +41,12 @@ public class StudentAffairsDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<BaseEntity>().Property(entity => entity.CreationDate)
-            .HasDefaultValueSql("NOW()");
+        // Apply all configurations in the domain assemblies
+        // Users, Academic Structure & Courses
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(User).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(Faculty).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(Course).Assembly);
 
-        modelBuilder.Entity<Semester>()
-            .Property(sem => sem.Season)
-            .HasConversion<string>();
-        
-        // Ignore BaseEntity as a table
-        modelBuilder.Ignore<BaseEntity>();
-
-        modelBuilder.Entity<CourseEnrollment>()
-            .Property(enrollment => enrollment.Status)
-            .HasConversion<string>();
-        
-        modelBuilder.Entity<Student>()
-            .Property(stud => stud.Status)
-            .HasConversion<string>();
-        
-        modelBuilder.Entity<Admin>()
-            .Property(ad => ad.Privileges)
-            .HasConversion<string>();
 
         base.OnModelCreating(modelBuilder);
     }

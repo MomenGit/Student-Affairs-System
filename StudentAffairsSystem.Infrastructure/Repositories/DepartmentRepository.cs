@@ -1,10 +1,8 @@
-using StudentAffairsSystem.WebApi.Data;
+using StudentAffairsSystem.Domain.AcademicStructure.Entities;
+using StudentAffairsSystem.Domain.AcademicStructure.Repositories;
+using StudentAffairsSystem.Infrastructure.Data;
 
-namespace StudentAffairsSystem.WebApi.Repositories;
-
-public interface IDepartmentRepository : IRepository<Department>
-{
-}
+namespace StudentAffairsSystem.Infrastructure.Repositories;
 
 public class DepartmentRepository : Repository<Department>, IDepartmentRepository
 {
