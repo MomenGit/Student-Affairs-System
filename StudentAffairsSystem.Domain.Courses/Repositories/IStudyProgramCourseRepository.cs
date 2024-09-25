@@ -3,6 +3,6 @@ using StudentAffairsSystem.Shared.Repositories;
 
 namespace StudentAffairsSystem.Domain.Courses.Repositories;
 
-public interface ICourseRepository : IRepository<Course>
+public interface IStudyProgramCourseRepository : IRepository<StudyProgramCourse>
 {
 }
