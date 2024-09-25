@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Folder Include="Components\"/>
+        <Folder Include="Services\"/>
+        <Folder Include="Validations\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\StudentAffairsSystem.Domain.AcademicStructure\StudentAffairsSystem.Domain.AcademicStructure.csproj"/>
+        <ProjectReference Include="..\StudentAffairsSystem.Shared\StudentAffairsSystem.Shared.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="Microsoft.EntityFrameworkCore">
+            <HintPath>..\..\..\..\.nuget\packages\microsoft.entityframeworkcore\8.0.8\lib\net8.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+</Project>
