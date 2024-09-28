@@ -1,5 +1,5 @@
 using Courses.Entities;
-using StudentAffairsSystem.Shared.Repositories;
+using Shared.Repositories;
 
 namespace Courses.Repositories;
 

@@ -1,4 +1,4 @@
-namespace Shared.UnitsOfWork;
+namespace Shared.UnitOfWork;
 
 public interface IUnitOfWork : IDisposable
 {

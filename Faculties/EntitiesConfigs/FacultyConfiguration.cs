@@ -1,12 +1,12 @@
+using Faculties.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Shared.EntitiesConfigs;
-using Faculties.Entities;
 
 namespace Faculties.EntitiesConfigs;
 
-public class FacultyConfiguration : BaseEntityConfiguration<Entities.Faculty>
+public class FacultyConfiguration : BaseEntityConfiguration<Faculty>
 {
-    public override void Configure(EntityTypeBuilder<Entities.Faculty> builder)
+    public override void Configure(EntityTypeBuilder<Faculty> builder)
     {
         base.Configure(builder);
         builder.Property(f => f.Name).IsRequired();

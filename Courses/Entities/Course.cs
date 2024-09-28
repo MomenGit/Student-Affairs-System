@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using StudentAffairsSystem.Domain.AcademicStructure.Entities;
-using StudentAffairsSystem.Shared.Entities;
+using Shared.Entities;
+using StudyPrograms.Entities;
 
 namespace Courses.Entities;
 

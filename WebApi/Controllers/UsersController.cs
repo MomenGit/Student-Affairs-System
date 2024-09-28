@@ -1,7 +1,8 @@
 using Asp.Versioning;
-using Infrastructure.UnitsOfWork;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Users.Entities;
+using Users.Repositories;
 
 namespace WebApi.Controllers;
 
@@ -10,18 +11,18 @@ namespace WebApi.Controllers;
 [ApiVersion("1.0")]
 public class UsersController : ControllerBase
 {
-    private readonly UnitOfWork _unitOfWork;
+    private readonly UserRepository _userRepository;
 
-    public UsersController(IUnitOfWork unitOfWork)
+    public UsersController(IUserRepository userRepository)
     {
-        _unitOfWork = (UnitOfWork)unitOfWork;
+        _userRepository = (UserRepository)userRepository;
     }
 
     // GET: api/Users
     [HttpGet]
     public async Task<ActionResult<IEnumerable<User>>> GetUsers()
     {
-        IEnumerable<User> users = await _unitOfWork.Users.GetAllAsync();
+        IEnumerable<User> users = await _userRepository.GetAllAsync();
         return Ok(users);
     }
 
@@ -30,7 +31,7 @@ public class UsersController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<User>> GetUser(Guid id)
     {
-        User? user = await _unitOfWork.Users.GetByIdAsync(id);
+        User? user = await _userRepository.GetByIdAsync(id);
         if (user == null) return NotFound();
 
         return Ok(user);
@@ -40,8 +41,8 @@ public class UsersController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<User>> PostUser(User user)
     {
-        await _unitOfWork.Users.AddAsync(user);
-        await _unitOfWork.CompleteAsync();
+        await _userRepository.AddAsync(user);
+        await _userRepository.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
     }
@@ -52,15 +53,15 @@ public class UsersController : ControllerBase
     {
         if (id != user.Id) return BadRequest();
 
-        _unitOfWork.Users.Update(user);
+        _userRepository.Update(user);
 
         try
         {
-            await _unitOfWork.CompleteAsync();
+            await _userRepository.SaveChangesAsync();
         }
         catch (DbUpdateConcurrencyException)
         {
-            if (await _unitOfWork.Users.GetByIdAsync(id) == null) return NotFound();
+            if (await _userRepository.GetByIdAsync(id) == null) return NotFound();
             throw;
         }
 
@@ -71,11 +72,11 @@ public class UsersController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteUser(Guid id)
     {
-        User? user = await _unitOfWork.Users.GetByIdAsync(id);
+        User? user = await _userRepository.GetByIdAsync(id);
         if (user == null) return NotFound();
 
-        await _unitOfWork.Users.DeleteAsync(id);
-        await _unitOfWork.CompleteAsync();
+        await _userRepository.DeleteAsync(id);
+        await _userRepository.SaveChangesAsync();
 
         return NoContent();
     }

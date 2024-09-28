@@ -7,16 +7,26 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Reference Include="DotNetEnv">
+            <HintPath>..\..\..\..\.nuget\packages\dotnetenv\3.1.1\lib\netstandard1.3\DotNetEnv.dll</HintPath>
+        </Reference>
         <Reference Include="Microsoft.EntityFrameworkCore">
             <HintPath>..\..\..\..\.nuget\packages\microsoft.entityframeworkcore\8.0.8\lib\net8.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Hosting.Abstractions">
+            <HintPath>..\..\..\..\.nuget\packages\microsoft.extensions.hosting.abstractions\8.0.0\lib\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll</HintPath>
         </Reference>
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="FluentValidation" Version="11.10.0"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.8"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0"/>
     </ItemGroup>
 
 </Project>

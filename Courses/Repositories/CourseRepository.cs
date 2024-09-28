@@ -1,8 +1,8 @@
 using Courses.Entities;
-using Courses.Repositories;
+using Shared.Data;
 using Shared.Repositories;
 
-namespace Infrastructure.Repositories;
+namespace Courses.Repositories;
 
 public class CourseRepository : Repository<Course>, ICourseRepository
 {

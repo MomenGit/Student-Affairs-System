@@ -1,6 +1,6 @@
 using Courses.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using StudentAffairsSystem.Shared.EntitiesConfigs;
+using Shared.EntitiesConfigs;
 
 namespace Courses.EntitiesConfigs;
 

@@ -1,4 +1,4 @@
-namespace Infrastructure.Data;
+namespace Shared.Data;
 
 public static class DbInitializer
 {

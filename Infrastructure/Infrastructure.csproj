@@ -14,15 +14,24 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0"/>
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.8"/>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Courses\Courses.csproj" />
-        <ProjectReference Include="..\StudentAffairsSystem.Domain.AcademicStructure\StudentAffairsSystem.Domain.AcademicStructure.csproj"/>
-        <ProjectReference Include="..\StudentAffairsSystem.Domain.Users\StudentAffairsSystem.Domain.Users.csproj"/>
-        <ProjectReference Include="..\Shared\Shared.csproj" />
+        <ProjectReference Include="..\Admins\Admins.csproj"/>
+        <ProjectReference Include="..\CourseEnrollments\CourseEnrollments.csproj"/>
+        <ProjectReference Include="..\Courses\Courses.csproj"/>
+        <ProjectReference Include="..\Departments\Departments.csproj"/>
+        <ProjectReference Include="..\Faculties\Faculties.csproj"/>
+        <ProjectReference Include="..\Professors\Professors.csproj"/>
+        <ProjectReference Include="..\SemesterCourses\SemesterCourses.csproj"/>
+        <ProjectReference Include="..\Semesters\Semesters.csproj"/>
+        <ProjectReference Include="..\Students\Students.csproj"/>
+        <ProjectReference Include="..\StudyProgramCourses\StudyProgramCourses.csproj"/>
+        <ProjectReference Include="..\StudyPrograms\StudyPrograms.csproj"/>
+        <ProjectReference Include="..\Users\Users.csproj"/>
+        <ProjectReference Include="..\Shared\Shared.csproj"/>
     </ItemGroup>
 
 </Project>

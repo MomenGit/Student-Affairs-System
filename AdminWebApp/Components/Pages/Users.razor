@@ -1,0 +1,101 @@
+﻿@*@page "/students"
+@using Users.Entities
+
+@inject ILogger<User> Logger
+
+<div>Identifier: @Model!.Id</div>
+
+<EditForm Model="Model" OnValidSubmit="Submit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    <label>
+        <InputText @bind-Value="Model!.Id"/>
+    </label>
+    <button type="submit">Submit</button>
+</EditForm>
+
+<EditForm Model="Model" OnValidSubmit="Submit" FormName="Student">
+    <DataAnnotationsValidator/>
+    <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <InputText class="form-control" @bind-Value="Model!.FirstName"/>
+        <ValidationMessage For="@(() => _user.Name)"/>
+    </div>
+    <div class="mb-3">
+        <label for="name" class="form-label">Mobile:</label>
+        <InputText class="form-control" @bind-Value="@_user.Mobile"/>
+        <ValidationMessage For="@(() => _user.Mobile)"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Age:</label>
+        <InputNumber class="form-control" @bind-Value="@_user.Age"/>
+        <ValidationMessage For="@(() => _user.Age)"/>
+    </div>
+    $1$<div class="mb-3">
+        <label class="form-label">Telephone:</label>
+        <InputText class="form-control" @bind-Value="@student.Telephone" />
+        <ValidationMessage For="@(() => student.Telephone)" />
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <InputText type="email" class="form-control" @bind-Value="@student.Email" />
+        <ValidationMessage For="@(() => student.Email)" />
+    </div>
+    <div class="mb-3">
+        <label for="message" class="form-label">Message:</label>
+        <InputText class="form-control" @bind-Value="@student.Message" />
+        <ValidationMessage For="@(() => student.Message)" />
+    </div>#1#
+    <ValidationSummary/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+<h3>Students</h3>
+
+<h1>Registered Students</h1>
+<EditForm Model="@_user" OnValidSubmit="@SearchByName">
+    <div class="mb-3">
+        <label for="name" class="form-label">Search by name:</label>
+        <InputText class="form-control" @bind-Value="@_searchString"/>
+        <ValidationMessage For="@(() => _searchString)"/>
+        <div class="mt-4">
+            <button type="submit" class="btn btn-outline-primary">Search</button>
+        </div>
+    </div>
+</EditForm >
+<div class="container mt-5">
+    <h2>Bootstrap Table</h2>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Phone number</th>
+            <th scope="col">Age</th>
+            <th scope="col">Enrollment</th>
+            $1$<th scope="col">Telephone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Message</th>#1#
+            <th scope="col">Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (StudentDTO item in _user)
+        {
+            <tr>
+                <td scope="col">@item.FirstName</td>
+                <td scope="col">@item.LastName</td>
+                <td scope="col">@item.Email</td>
+                <td scope="col">@item.PhoneNumber</td>
+                <td scope="col">@item.Address</td>
+                <td scope="col">@item.EnrollmentDate</td>
+                <td scope="col">
+                    <a href="javascript:void(0)" onclick="@(() => EditStudent(item))">Edit</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>*@

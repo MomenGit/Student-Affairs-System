@@ -1,4 +1,4 @@
-using StudentAffairsSystem.AdminWebApp.Components;
+using AdminWebApp.Components;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

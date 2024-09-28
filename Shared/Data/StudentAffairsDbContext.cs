@@ -1,8 +1,8 @@
 using DotNetEnv;
-using Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Shared.Extensions;
 
-namespace Infrastructure.Data;
+namespace Shared.Data;
 
 public class StudentAffairsDbContext : DbContext
 {

@@ -13,21 +13,14 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\StudentAffairsSystem.Domain.AcademicStructure\StudentAffairsSystem.Domain.AcademicStructure.csproj"/>
-        <ProjectReference Include="..\Shared\Shared.csproj" />
+        <ProjectReference Include="..\Faculties\Faculties.csproj"/>
+        <ProjectReference Include="..\Shared\Shared.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
         <Reference Include="Microsoft.EntityFrameworkCore">
             <HintPath>..\..\..\..\.nuget\packages\microsoft.entityframeworkcore\8.0.8\lib\net8.0\Microsoft.EntityFrameworkCore.dll</HintPath>
         </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Shared.Repositories;
 
-namespace Infrastructure.Repositories;
+namespace Shared.Repositories;
 
 public class Repository<T> : IRepository<T> where T : class
 {
@@ -38,5 +37,10 @@ public class Repository<T> : IRepository<T> where T : class
     {
         T? entity = await _dbSet.FindAsync(id);
         if (entity != null) _dbSet.Remove(entity);
+    }
+
+    public async Task<int> SaveChangesAsync()
+    {
+        return await _dbContext.SaveChangesAsync();
     }
 }

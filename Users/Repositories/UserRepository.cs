@@ -1,9 +1,8 @@
-using Infrastructure.Data;
+using Shared.Data;
 using Shared.Repositories;
 using Users.Entities;
-using Users.Repositories;
 
-namespace Infrastructure.Repositories;
+namespace Users.Repositories;
 
 public class UserRepository : Repository<User>, IUserRepository
 {

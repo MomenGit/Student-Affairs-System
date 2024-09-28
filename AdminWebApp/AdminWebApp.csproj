@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\StudentAffairsSystem.Domain.Users\StudentAffairsSystem.Domain.Users.csproj"/>
+        <ProjectReference Include="..\Users\Users.csproj"/>
     </ItemGroup>
 
 </Project>

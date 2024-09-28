@@ -1,8 +1,10 @@
+using Faculties.Entities;
+using Shared.Data;
 using Shared.Repositories;
 
 namespace Faculties.Repositories;
 
-public class FacultyRepository : Repository<Faculties>, IFacultyRepository
+public class FacultyRepository : Repository<Faculty>, IFacultyRepository
 {
     private readonly StudentAffairsDbContext _context;
 
