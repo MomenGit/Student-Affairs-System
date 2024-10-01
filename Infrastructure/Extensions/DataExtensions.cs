@@ -1,11 +1,11 @@
 using System.Reflection;
+using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shared.Data;
 using Shared.Utilities;
 
-namespace Shared.Extensions;
+namespace Infrastructure.Extensions;
 
 public static class DataExtensions
 {

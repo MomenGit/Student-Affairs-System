@@ -1,8 +1,9 @@
 using Faculties.Entities;
-using Shared.Data;
+using Faculties.Repositories;
+using Infrastructure.Data;
 using Shared.Repositories;
 
-namespace Faculties.Repositories;
+namespace Infrastructure.Repositories;
 
 public class FacultyRepository : Repository<Faculty>, IFacultyRepository
 {

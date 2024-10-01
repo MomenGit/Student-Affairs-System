@@ -1,8 +1,9 @@
 using Departments.Entities;
-using Shared.Data;
+using Departments.Repositories;
+using Infrastructure.Data;
 using Shared.Repositories;
 
-namespace Departments.Repositories;
+namespace Infrastructure.Repositories;
 
 public class DepartmentRepository : Repository<Department>, IDepartmentRepository
 {

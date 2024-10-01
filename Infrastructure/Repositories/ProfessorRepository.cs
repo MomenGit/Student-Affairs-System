@@ -1,8 +1,9 @@
+using Infrastructure.Data;
 using Professors.Entities;
-using Shared.Data;
+using Professors.Repositories;
 using Shared.Repositories;
 
-namespace Professors.Repositories;
+namespace Infrastructure.Repositories;
 
 public class ProfessorRepository : Repository<Professor>, IProfessorRepository
 {

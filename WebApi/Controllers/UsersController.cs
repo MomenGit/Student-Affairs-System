@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Users.Entities;

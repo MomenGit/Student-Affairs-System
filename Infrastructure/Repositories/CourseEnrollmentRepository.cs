@@ -1,8 +1,9 @@
 using CourseEnrollments.Entities;
-using Shared.Data;
+using CourseEnrollments.Repositories;
+using Infrastructure.Data;
 using Shared.Repositories;
 
-namespace CourseEnrollments.Repositories;
+namespace Infrastructure.Repositories;
 
 public class CourseEnrollmentRepository : Repository<CourseEnrollment>, ICourseEnrollmentRepository
 {

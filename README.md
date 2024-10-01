@@ -106,23 +106,24 @@ dotnet run
 
 ```
 StudentAffairsSystem/
-├── WebApi/                        # API Project
-├── AdminWebApp/                   # Admin Dashboard (Blazor)
-├── Domains.Users/                 # Users Domain
-├── Domains.Students/              # Students Domain
-├── Domains.Professors/            # Professors Domain
-├── Domains.Admins/                # Admins Domain
-├── Domains.Courses/               # Courses Domain
-├── Domains.StudyProgramCourses/   # StudyProgram Courses Domain
-├── Domains.SemesterCourses/       # Semester Courses Domain
-├── Domains.CourseEnrollments/     # CourseEnrollments Domain
-├── Domains.Faculties/             # Facultys Management Domain
-├── Domains.Departments/           # Departments Management Domain
-├── Domains.StudyPrograms/         # StudyPrograms Management Domain
-├── Domains.Semesters/             # Semesters Management Domain
-├── Infrastructure/                # Business Logic
-└── Shared/                        # Shared models, utilities, base classes, Repositories, 
-                                     Unit of Work, and EF Core configurations
+├── WebApi/                    # API Project
+├── AdminWebApp/               # Admin Dashboard (Blazor)
+├── Infrastructure/            # Business Logic
+├── Shared/                    # Shared models, utilities, base classes, Repositories, 
+├                                Unit of Work, and EF Core configurations
+└── Domains/                   # Domains:
+    ├── Users/                 # Users Domain
+    ├── Students/              # Students Domain
+    ├── Professors/            # Professors Domain
+    ├── Admins/                # Admins Domain
+    ├── Courses/               # Courses Domain
+    ├── StudyProgramCourses/   # StudyProgram Courses Domain
+    ├── SemesterCourses/       # Semester Courses Domain
+    ├── CourseEnrollments/     # CourseEnrollments Domain
+    ├── Faculties/             # Facultys Management Domain
+    ├── Departments/           # Departments Management Domain
+    ├── StudyPrograms/         # StudyPrograms Management Domain
+    └── Semesters/             # Semesters Management Domain
 ```
 
 ## API Documentation

@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Shared.Repositories;
 
-public class Repository<T> : IRepository<T> where T : class
+public abstract class Repository<T> : IRepository<T> where T : class
 {
     protected readonly DbContext _dbContext;
     protected readonly DbSet<T> _dbSet;

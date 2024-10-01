@@ -1,8 +1,9 @@
 using Admins.Entities;
-using Shared.Data;
+using Admins.Repositories;
+using Infrastructure.Data;
 using Shared.Repositories;
 
-namespace Admins.Repositories;
+namespace Infrastructure.Repositories;
 
 public class AdminRepository : Repository<Admin>, IAdminRepository
 {

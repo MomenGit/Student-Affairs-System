@@ -1,8 +1,9 @@
+using Infrastructure.Data;
 using Semesters.Entities;
-using Shared.Data;
+using Semesters.Repositories;
 using Shared.Repositories;
 
-namespace Semesters.Repositories;
+namespace Infrastructure.Repositories;
 
 public class SemesterRepository : Repository<Semester>, ISemesterRepository
 {

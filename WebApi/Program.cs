@@ -1,6 +1,5 @@
 using Asp.Versioning;
 using Infrastructure.Extensions;
-using Shared.Extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
 namespace Shared.Entities;
 
-public class BaseDateTrace
+public abstract class BaseDateTrace
 {
     public DateTime CreationDate { get; set; }
 

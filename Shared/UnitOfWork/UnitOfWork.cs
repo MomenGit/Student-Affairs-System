@@ -1,12 +1,12 @@
-using Shared.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Shared.UnitOfWork;
 
-public class UnitOfWork : IUnitOfWork
+public abstract class UnitOfWork : IUnitOfWork
 {
-    private readonly StudentAffairsDbContext _context;
+    private readonly DbContext _context;
 
-    public UnitOfWork(StudentAffairsDbContext context)
+    protected UnitOfWork(DbContext context)
     {
         _context = context;
     }

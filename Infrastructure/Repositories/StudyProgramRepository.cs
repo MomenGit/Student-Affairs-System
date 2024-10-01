@@ -1,8 +1,9 @@
-using Shared.Data;
+using Infrastructure.Data;
 using Shared.Repositories;
 using StudyProgramCourses.Entities;
+using StudyProgramCourses.Repositories;
 
-namespace StudyProgramCourses.Repositories;
+namespace Infrastructure.Repositories;
 
 public class StudyProgramCourseRepository : Repository<StudyProgramCourse>, IStudyProgramCourseRepository
 {
