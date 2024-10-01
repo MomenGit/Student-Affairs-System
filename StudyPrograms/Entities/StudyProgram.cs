@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Departments.Entities;
 using Semesters.Entities;
 using Shared.Entities;
@@ -8,7 +6,7 @@ namespace StudyPrograms.Entities;
 
 public class StudyProgram : BaseEntity
 {
-    [Required] public string? Name { get; set; }
+    public string? Name { get; set; }
 
     public string? Description { get; set; }
 
@@ -18,11 +16,11 @@ public class StudyProgram : BaseEntity
 
     public SemesterSeason DefaultSemesterStartSeason { get; set; }
 
-    public List<DateOnly>? ApplicationStartDates { get; set; }
+    public ICollection<DateOnly>? ApplicationStartDates { get; set; }
 
-    public List<DateOnly>? ApplicationEndDates { get; set; }
+    public ICollection<DateOnly>? ApplicationEndDates { get; set; }
 
-    [ForeignKey("Department")] public Guid DepartmentId { get; set; }
+    public Guid DepartmentId { get; set; }
 
     public Department? Department { get; set; }
 }

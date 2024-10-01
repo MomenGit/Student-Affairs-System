@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations.Schema;
 using Shared.Entities;
 using StudyPrograms.Entities;
 
@@ -20,7 +19,7 @@ public class Course : BaseEntity
 
     public ICollection<Course>? Prerequisites { get; set; }
 
-    [ForeignKey("StudyProgram")] public Guid StudyProgramId { get; set; }
+    public Guid StudyProgramId { get; set; }
 
     public StudyProgram? StudyProgram { get; set; }
 }

@@ -14,10 +14,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Validations\"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <Reference Include="Microsoft.EntityFrameworkCore">
             <HintPath>..\..\..\..\.nuget\packages\microsoft.entityframeworkcore\8.0.8\lib\net8.0\Microsoft.EntityFrameworkCore.dll</HintPath>
         </Reference>

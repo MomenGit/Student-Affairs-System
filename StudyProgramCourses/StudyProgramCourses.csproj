@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Validations\"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <ProjectReference Include="..\Courses\Courses.csproj"/>
         <ProjectReference Include="..\Shared\Shared.csproj"/>
         <ProjectReference Include="..\StudyPrograms\StudyPrograms.csproj"/>

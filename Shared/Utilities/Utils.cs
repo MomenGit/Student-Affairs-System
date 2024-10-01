@@ -46,4 +46,11 @@ public static class Utils
 
         return domainAssemblies;
     }
+
+    // Custom validation to check if a string is a valid URL
+    public static bool BeAValidUrl(string? url)
+    {
+        return Uri.TryCreate(url, UriKind.Absolute, out Uri? uriResult) &&
+               (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+    }
 }
