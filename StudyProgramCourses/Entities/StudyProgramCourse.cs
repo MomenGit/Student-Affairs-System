@@ -4,7 +4,7 @@ using StudyPrograms.Entities;
 
 namespace StudyProgramCourses.Entities;
 
-public class StudyProgramCourse : BaseDateTrace
+public class StudyProgramCourse : BaseEntity
 {
     public Guid StudyProgramId { get; set; }
 

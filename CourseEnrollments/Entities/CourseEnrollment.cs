@@ -5,7 +5,7 @@ using Students.Entities;
 
 namespace CourseEnrollments.Entities;
 
-public class CourseEnrollment : BaseDateTrace
+public class CourseEnrollment : BaseEntity
 {
     [ForeignKey("Student")] public Guid StudentId { get; set; }
 

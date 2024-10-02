@@ -4,11 +4,11 @@ using StudyProgramCourses.Entities;
 
 namespace StudyProgramCourses.EntitiesConfigs;
 
-public class StudyProgramCourseConfiguration : BaseDateTraceConfiguration<StudyProgramCourse>
+public class StudyProgramCourseConfiguration : BaseEntityConfiguration<StudyProgramCourse>
 {
     public override void Configure(EntityTypeBuilder<StudyProgramCourse> builder)
     {
-        builder.HasKey(spc => new { spc.StudyProgramId, spc.CourseId });
+        // builder.HasKey(spc => new { spc.StudyProgramId, spc.CourseId });
 
         builder.HasOne(spc => spc.StudyProgram)
             .WithMany()

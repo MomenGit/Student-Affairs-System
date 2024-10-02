@@ -4,13 +4,13 @@ using Shared.EntitiesConfigs;
 
 namespace CourseEnrollments.EntitiesConfigs;
 
-public class CourseEnrollmentConfiguration : BaseDateTraceConfiguration<CourseEnrollment>
+public class CourseEnrollmentConfiguration : BaseEntityConfiguration<CourseEnrollment>
 {
     public override void Configure(EntityTypeBuilder<CourseEnrollment> builder)
     {
         base.Configure(builder);
 
-        builder.HasKey(ce => new { ce.StudentId, ce.SemesterCourseId });
+        // builder.HasKey(ce => new { ce.StudentId, ce.SemesterCourseId });
 
         builder.Property(ce => ce.Comment).HasMaxLength(255);
 
