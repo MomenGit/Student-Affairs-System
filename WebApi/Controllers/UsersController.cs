@@ -1,5 +1,4 @@
 using Asp.Versioning;
-using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Users.Entities;
@@ -7,19 +6,19 @@ using Users.Repositories;
 
 namespace WebApi.Controllers;
 
-[ApiController]
-[Route("api/v{version:apiVersion}/[controller]")]
 [ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/[controller]")]
+[ApiController]
 public class UsersController : ControllerBase
 {
-    private readonly UserRepository _userRepository;
+    private readonly IUserRepository _userRepository;
 
     public UsersController(IUserRepository userRepository)
     {
-        _userRepository = (UserRepository)userRepository;
+        _userRepository = userRepository;
     }
 
-    // GET: api/Users
+    // GET: api/v1.0/Users
     [HttpGet]
     public async Task<ActionResult<IEnumerable<User>>> GetUsers()
     {
@@ -27,9 +26,8 @@ public class UsersController : ControllerBase
         return Ok(users);
     }
 
-
-    // GET: api/Users/5
-    [HttpGet("{id}")]
+    // GET: api/v1.0/Users/{id}
+    [HttpGet("{id:guid}")]
     public async Task<ActionResult<User>> GetUser(Guid id)
     {
         User? user = await _userRepository.GetByIdAsync(id);
@@ -38,7 +36,7 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
-    // POST: api/Users
+    // POST: api/v1.0/Users
     [HttpPost]
     public async Task<ActionResult<User>> PostUser(User user)
     {
@@ -48,11 +46,11 @@ public class UsersController : ControllerBase
         return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
     }
 
-    // PUT: api/Users/5
-    [HttpPut("{id}")]
+    // PUT: api/v1.0/Users/{id}
+    [HttpPut("{id:guid}")]
     public async Task<IActionResult> PutUser(Guid id, User user)
     {
-        if (id != user.Id) return BadRequest();
+        if (id != user.Id) return BadRequest("User ID mismatch.");
 
         _userRepository.Update(user);
 
@@ -69,8 +67,8 @@ public class UsersController : ControllerBase
         return NoContent();
     }
 
-    // DELETE: api/Users/5
-    [HttpDelete("{id}")]
+    // DELETE: api/v1.0/Users/{id}
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteUser(Guid id)
     {
         User? user = await _userRepository.GetByIdAsync(id);

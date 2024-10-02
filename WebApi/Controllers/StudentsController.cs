@@ -1,83 +1,77 @@
-/*using Microsoft.AspNetCore.Mvc;
+using Asp.Versioning;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Users.Entities;
-using Shared.Repositories;
+using Students.Entities;
+using Students.Repositories;
 
 namespace WebApi.Controllers;
 
-[Route("api/[controller]")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/[controller]")]
 [ApiController]
 public class StudentsController : ControllerBase
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IStudentRepository _studentRepository;
 
-    public StudentsController(IUnitOfWork unitOfWork)
+    public StudentsController(IStudentRepository studentRepository)
     {
-        _unitOfWork = unitOfWork;
+        _studentRepository = studentRepository;
     }
 
-    // GET: api/Students
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
     {
-        IEnumerable<Student> students = await _unitOfWork.Students.GetAllAsync();
+        IEnumerable<Student> students = await _studentRepository.GetAllAsync();
         return Ok(students);
     }
 
-    // GET: api/Students/5
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     public async Task<ActionResult<Student>> GetStudent(Guid id)
     {
-        Student? student = await _unitOfWork.Students.GetByIdAsync(id);
-
+        Student? student = await _studentRepository.GetByIdAsync(id);
         if (student == null) return NotFound();
 
         return Ok(student);
     }
 
-    // POST: api/Students
     [HttpPost]
     public async Task<ActionResult<Student>> PostStudent(Student student)
     {
-        await _unitOfWork.Students.AddAsync(student);
-        await _unitOfWork.CompleteAsync();
+        await _studentRepository.AddAsync(student);
+        await _studentRepository.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetStudent), new { id = student.Id }, student);
     }
 
-    // PUT: api/Students/5
-    [HttpPut("{id}")]
+    [HttpPut("{id:guid}")]
     public async Task<IActionResult> PutStudent(Guid id, Student student)
     {
-        if (id != student.Id) return BadRequest();
+        if (id != student.Id) return BadRequest("Student ID mismatch.");
 
-        _unitOfWork.Students.Update(student);
+        _studentRepository.Update(student);
 
         try
         {
-            await _unitOfWork.CompleteAsync();
+            await _studentRepository.SaveChangesAsync();
         }
         catch (DbUpdateConcurrencyException)
         {
-            if (await _unitOfWork.Students.GetByIdAsync(id) == null) return NotFound();
-
+            if (await _studentRepository.GetByIdAsync(id) == null) return NotFound();
             throw;
         }
 
         return NoContent();
     }
 
-    // DELETE: api/Students/5
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteStudent(Guid id)
     {
-        Student? student = await _unitOfWork.Students.GetByIdAsync(id);
+        Student? student = await _studentRepository.GetByIdAsync(id);
         if (student == null) return NotFound();
 
-        await _unitOfWork.Students.DeleteAsync(id);
-        await _unitOfWork.CompleteAsync();
+        await _studentRepository.DeleteAsync(id);
+        await _studentRepository.SaveChangesAsync();
 
         return NoContent();
     }
-}*/
-
+}
